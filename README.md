@@ -21,8 +21,12 @@
 โดยเราจะนำ output ที่ได้จาก DenseNet201 มาทำ conv2d และ maxpooling2d อีกรอบนึงแล้วค่อยทำ Flatten และ dense กับ dropout อีกอย่างละ 2 layers ก่อนจะ dense และ Softmax เป็นครั้งสุดท้ายเพื่อเป็นผลการทำนายของ class ทั้ง 8 classes
 การที่เรานำมา conv2d ต่ออีกครั้งเพื่อจะเป็นการง่ายต่อการเทรนและสามารถนำไปใช้สำหรับ GradCAM ได้ง่ายอีกด้วย
 
+![image](https://github.com/khwanck/DeepMyeCNN/blob/main/images/DenseNet201.png)
+
 ## Training:
   เราได้ทำการแบ่งข้อมูลจาก data set มา 90% หรือประมาณ 1440 รูป เพื่อนำมาเป็นข้อมูลที่จะใช้เทรนโมเดลเรา โดยจะมี hyper parameter ต่างๆดังนี้  optimizers = Adam , Learning rate = 0.0001,batch_size = 20, epochs = 10
+
+![image](https://github.com/khwanck/DeepMyeCNN/blob/main/images/training-parameter.png)
 
 เนื่องจากผลการเทรนได้ผลลัพธ์เป็นที่น่าพอใจเราจึงไม่จำเป็นต้องปรับ hyper parameter อื่นๆอีก
 
@@ -30,7 +34,12 @@
   หลังจากได้modelที่ดีที่สุดจากการ train แล้ว เราจึงนำ model ที่ได้ไปทดสอบกับ test data set ประมาณ 160 รูป (8 classes  class ละ 20 รูป) ผลการทำนายมีความแม่นยำมากกว่า 90% เพื่อความแน่ใจว่า model ที่ได้มานั้นจะไม่ได้ overfit กับข้อมูลส่วนอื่นๆในภาพ เราจึงได้นำโปรแกรม GradCAM มาช่วยยืนยันว่าโมเดลนั้นใช้ข้อมูลจากส่วนไหนของรูปภาพเพื่อนำมาทำนาย ผลการยืนยันจากโปรแกรม GradCAM ทำให้เห็นได้ว่าผลการทำนายส่วนใหญ่นำข้อมูลจากรูปของผลไม้ไปใช้วิเคราะห์และทำนายจริง
 ผลการทำนายจากtest dataset
 
+![image](https://github.com/khwanck/DeepMyeCNN/blob/main/images/output1.png)
+
 ผลการทำนายจาก GradCAM
+
+![image](https://github.com/khwanck/DeepMyeCNN/blob/main/images/output2.png)
+![image](https://github.com/khwanck/DeepMyeCNN/blob/main/images/output3.png)
 
 ## Discussion & Conclusion:
   เราสามารถนำโมเดลสำเร็จรูปที่มีการเทรนมาแล้วเป็นอย่างดีเช่น VGG16, ResNet, MobileNet, DenseNet มาเป็น Pre-training โดยทำการปิดส่วน Classification เดิม แล้วทำการเพิ่ม layer Classification ของเราขึ้นมาใหม่ได้เอง เพื่อนำมาใช้เทรนกับชุดข้อมูลที่เราสนใจและไม่มีอยู่ใน imagenet ได้  เนื่องจากชุดข้อมูลที่เรานำมาเทรนใหม่เป็นชุดข้อมูลเกี่ยวกับผลไม้ไทยซึ่งมีลักษณะ สีสัน แตกต่างกันพอสมควร จึงทำให้เราสามารถสร้างโมเดลมาทำนายได้อย่างแม่นยำโดยไม่ยากนัก  ถ้าเป็นชุดข้อมูลอื่นๆที่มีรูปภาพที่ซับซ้อนหรือคลุมเครืออาจจะทำให้ไม่สามารถทำนายได้ดีเช่นนี้
