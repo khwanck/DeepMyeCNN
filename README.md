@@ -45,6 +45,7 @@
 
 ## Team Members
 * ทุกคนช่วยกันรวบรวมรูปของผลไม้แต่ละชนิด
+
 ID   | Responsibility |% Contribute
 --------- | ------ | ------
 6310422062 | Experiment Pre-training model | 20%
