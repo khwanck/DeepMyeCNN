@@ -68,5 +68,5 @@ ID   | Responsibility |% Contribute
 6310422068 | Cleaning Image format & Separate Data Set | 20%
 6310422070 | Evaluate train method on test set | 20%
 
-## Credit
+## End Credit
 โปรเจคนี้เป็นส่วนหนึ่งของวิชา Deep Learning (BADS7604), หลักสูตรวิทยาศาสตรมหาบัณฑิต สาขาวิชาการวิเคราะห์ธุรกิจและวิทยาการข้อมูล  , สถาบันบัณฑิตพัฒนบริหารศาสตร์ (NIDA)
