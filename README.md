@@ -50,7 +50,12 @@
 *	ตอนแรกทำการ resize รูปทุกรูปให้มีขนาด 128x128 ก่อนเพื่อนำไป train แต่พอจะนำรูปที่ออกจาก conv2d layer สุดท้ายไปใช้ทำ GradCAM ขนาดของรูปที่ได้จาก conv2d layer สุดท้ายมีขนาดเล็กเกินไป (3x3) ทำให้ได้ GradCAM ที่ไม่ค่อยละเอียด เลยทำการเปลี่ยนขนาดรูปเป็น 256x256 แทนเพื่อให้ GradCAM มีความละเอียด (6x6) มากขึ้น อาจจะทำให้เสียเวลาเทรนขึ้นเล็กน้อยแต่ก็ทำให้ผลการทำนายแม่นขึ้นด้วย
 
 ## References:
------
+* https://towardsdatascience.com/supercharge-image-classification-with-transfer-learning-4b8c52e69c0c
+* https://blog.roboflow.com/how-to-train-mobilenetv2-on-a-custom-dataset/
+* https://medium.datadriveninvestor.com/deep-learning-day-2-practical-implementation-of-cnn-9b51ba9d28a9
+* https://www.pluralsight.com/guides/introduction-to-densenet-with-tensorflow
+* https://keras.io/examples/vision/grad_cam/
+* https://muthu.co/understanding-the-classification-report-in-sklearn/
 
 ## Team Members
 * ทุกคนช่วยกันรวบรวมรูปของผลไม้แต่ละชนิด
@@ -62,3 +67,6 @@ ID   | Responsibility |% Contribute
 6310422067 | Experiment Augmentation | 20%
 6310422068 | Cleaning Image format & Separate Data Set | 20%
 6310422070 | Evaluate train method on test set | 20%
+
+## Credit
+โปรเจคนี้เป็นส่วนหนึ่งของวิชา Deep Learning (BADS7604), หลักสูตรวิทยาศาสตรมหาบัณฑิต สาขาวิชาการวิเคราะห์ธุรกิจและวิทยาการข้อมูล  , สถาบันบัณฑิตพัฒนบริหารศาสตร์ (NIDA)
